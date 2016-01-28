@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160126073257) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "mappings", force: :cascade do |t|
     t.integer  "roommate_id"
     t.integer  "task_id"
