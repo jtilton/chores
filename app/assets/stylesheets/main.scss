@@ -33,10 +33,12 @@ body {
     vertical-align: middle;
   }
   .arrow {
+    color: #666;
     font-size: 30px;
     vertical-align: middle;
     &:hover {
       cursor: pointer;
+      color: #222;
     }
   }
 }
