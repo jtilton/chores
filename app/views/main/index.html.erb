@@ -1,0 +1,16 @@
+<div class="title"><%= App.countdown_string %></div>
+
+<%= react_component('DatePicker') %>
+
+<%
+  floors = App::FLOORS.map do |f|
+    floor = App.roommates_for_floor(f)
+    floor.each do |rm|
+      rm[:photo_path] = asset_path(rm[:photo_path])
+    end
+  end %>
+
+<%= react_component('Assignments', :floors => floors) %>
+
+
+

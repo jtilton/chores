@@ -1,0 +1,140 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600italic,600,400italic,300italic,300);
+
+body {
+  font-weight: 400;
+  font-family: "Open Sans";
+  background-color: #EEE;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  padding: 10px 0 10px 0;
+  margin-bottom: 10px;
+  background-color: #2574A9;
+}
+
+.datepicker {
+  text-align: center;
+  margin: 15px auto;
+  .daterange {
+    display: inline-block;
+    margin-left: 13px;
+    margin-right: 17px;
+    font-size: 20px;
+  }
+}
+
+.floor-label {
+  text-align: center;
+  display: block;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #777;
+  text-transform: uppercase;
+}
+
+.floor {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.card {
+  display: inline-block;
+  width: 120px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+  transform-origin: 50% 90%;
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: scale(1.03);
+
+  }
+
+  .task {
+    font-size: 16px;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    color: #555;
+    // border-bottom: 1px solid rgba(black, .2);
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  .content {
+    height: 100px;
+    padding: 0 10px;
+    .details {
+      font-size: 12px;
+      margin: 0;
+      padding-top: 5px;
+    }
+
+    .roommate {
+      padding: 10px 0 15px 0;
+
+      .name {
+        font-size: 15px;
+      }
+
+      .photo {
+        height: 50px;
+        border-radius: 25px;
+      }
+    }
+  }
+
+
+  .button {
+    cursor: pointer;
+    background-color: #555;
+    height: 35px;
+    line-height: 35px;
+    color: white;
+    font-size: 13px;
+    transition: background-color 0.2s;
+
+    &:before {
+      content: 'Mark as done'
+    }
+    &:hover {
+      background-color: #222;
+    }
+
+    &.complete {
+      background-color: #00B16A;
+      &:hover {
+        background-color: #1E824C;
+      }
+
+      &:before {
+        content: 'DONE!'
+      }
+    }
+  }
+
+
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+
+
