@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'assignments' => 'assignments#fetch'
+
   get 'mapping/update'
   resources :mappings
   # The priority is based upon order of creation: first created -> highest priority.

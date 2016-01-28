@@ -5,11 +5,18 @@ class App
   FLOORS = [1, 2]
 
   def self.countdown_string
-    date = Date.parse(DAY_OF_WEEK)
-    date = date + (date >= Date.today ? 0 : 7)
+    date = DateUtils.next_xday_of_week(DAY_OF_WEEK)
     days_remaining = (date - Date.today).to_i
     day_string = days_remaining == 1 ? "day" : "days"
     "Chores due by #{date.strftime("%a %-m/%-d")} (in #{days_remaining} #{day_string})"
+  end
+
+  def self.initial_end_date
+    DateUtils.next_xday_of_week(App::DAY_OF_WEEK)
+  end
+
+  def self.initial_date_range
+    DateUtils.dates_of_week_ending_on(initial_end_date)
   end
 
   def self.roommates_for_floor(floor)

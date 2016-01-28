@@ -26,8 +26,18 @@ body {
   .daterange {
     display: inline-block;
     margin-left: 13px;
-    margin-right: 17px;
-    font-size: 20px;
+    margin-right: 21px;
+    font-size: 30px;
+    line-height: 45px;
+    width: 170px;
+    vertical-align: middle;
+  }
+  .arrow {
+    font-size: 30px;
+    vertical-align: middle;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
