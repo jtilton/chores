@@ -33,32 +33,17 @@ class App
   end
 
   def self.generate_mappings
-    first_floor_mappings =
-      Roommate::FIRST_FLOOR.each_with_index.map do |p, i|
-        task_id = (i + offset) % Task::NUM_TASKS
+    previous_offset = offset
+    App::FLOORS.each do |f|
+      current_floor = Roommate::FLOORS.keys.select{|k| Roommate::FLOORS[k]==f}
+      current_floor.each_with_index.map do |id, i|
+        task_id = (i + previous_offset) % Task::NUM_TASKS
         Mapping.new({
-          :roommate_id => p,
+          :roommate_id => id,
           :task_id => task_id,
-          :offset => offset,
-          :ds => Date.today})
+          :offset => previous_offset,
+          :ds => Date.today}).save!
       end
-
-    second_floor_mappings =
-      Roommate::SECOND_FLOOR.each_with_index.map do |p, i|
-        task_id = (i + offset) % (Task::NUM_TASKS + 1)
-        Mapping.new({
-          :roommate_id => p,
-          :task_id => task_id,
-          :offset => offset,
-          :ds => Date.today})
-      end
-
-    first_floor_mappings.each do |m|
-      m.save!
-    end
-
-    second_floor_mappings.each do |m|
-      m.save!
     end
   end
 
