@@ -18,12 +18,12 @@ class Task
   }
 
   DESCRIPTIONS = {
-    BATHROOM_A => "The small bathroom + wash hand/kitchen towels",
-    BATHROOM_B => "The small bathroom + wash hand/kitchen towels",
-    KITCHEN_A => "The small bathroom + wash hand/kitchen towels",
-    KITCHEN_B => "The small bathroom + wash hand/kitchen towels",
-    FLOORS => "The small bathroom + wash hand/kitchen towels",
-    TRASH => "The small bathroom + wash hand/kitchen towels",
+    BATHROOM_A => "Small bathroom + wash hand/kitchen towels",
+    BATHROOM_B => "Large bathroom",
+    KITCHEN_A => "Wipe counters, scrub sink, clear fridge",
+    KITCHEN_B => "Wipe counters, scrub sink, clear fridge",
+    FLOORS => "Sweep or swiffer all the floors",
+    TRASH => "Trash, recycle, compost for both floors",
   }
 
 end
