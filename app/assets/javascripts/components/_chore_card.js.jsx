@@ -1,26 +1,32 @@
 const ChoreCard = React.createClass({
   getInitialState: function() {
     return {
-      done: this.props.roommate.mapping.done,
+      done: this.props.card.done,
       details: false
     };
+  },
+
+  componentWillReceiveProps: function(nextProps) {
+    this.setState({done: nextProps.card.done});
   },
 
   render: function() {
     return (
       <div className="card">
         <div className="task" onClick={this.toggleDetails}>
-          {this.props.roommate.task.name}
+          {this.props.card.task.name}
         </div>
 
         <div className="content">
           <p className={this.detailsClass()}>
-            {this.props.roommate.task.details}
+            {this.props.card.task.details}
           </p>
           <div className={this.roommateClass()}>
-            <img className="photo" alt="" src={this.props.roommate.photo_path}>
-            </img>
-            <div className="name"> {this.props.roommate.first_name} </div>
+            <Img className="photo"
+                 alt={this.props.card.roommate.first_name}
+                 src={'/assets/' + this.props.card.roommate.photo_path}
+            />
+            <div className="name"> {this.props.card.roommate.first_name} </div>
           </div>
         </div>
         <div className={this.buttonClass()} onClick={this.markDone}></div>
@@ -31,7 +37,7 @@ const ChoreCard = React.createClass({
   markDone: function() {
     $.ajax({
       data: {_method:'PUT'},
-      url: "/mappings/" + this.props.roommate.mapping.id,
+      url: "/mappings/" + this.props.card.id,
       type: "POST",
       dataType: "json",
       success: function ( data ) {

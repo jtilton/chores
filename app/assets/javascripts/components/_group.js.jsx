@@ -1,4 +1,4 @@
-const Floor = React.createClass({
+const Group = React.createClass({
   render: function() {
     return (
       <div className="floor">
@@ -9,8 +9,8 @@ const Floor = React.createClass({
   },
 
   getChoreCards: function() {
-    return _.map(this.props.roommates, function(r) {
-      return ( <ChoreCard roommate={r}/> )
+    return _.map(this.props.cards, function(r) {
+      return ( <ChoreCard card={r}/> )
     });
   }
 });

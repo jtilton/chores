@@ -26,18 +26,18 @@ class Roommate
     YU => "Yu Wu",
   }
 
-  FLOORS = {
-    ASH => 2,
-    ANDY => 1,
-    BEN => 1,
-    CARLY => 2,
-    DANI => 2,
-    DAVID => 2,
-    JENN => 2,
-    KATE => 1,
-    KELLY => 2,
-    WILLIE => 1,
-    YU => 1,
+  GROUPS = {
+    ASH => 1,
+    ANDY => 0,
+    BEN => 0,
+    CARLY => 1,
+    DANI => 1,
+    DAVID => 1,
+    JENN => 1,
+    KATE => 0,
+    KELLY => 1,
+    WILLIE => 0,
+    YU => 0,
   }
 
   attr_accessor :id, :first_name, :last_name

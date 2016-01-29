@@ -1,18 +1,13 @@
 <div class="title"><%= App.countdown_string %></div>
 
 <%
-  initial_floors = App::FLOORS.map do |f|
-    floor = App.roommates_for_floor(f)
-    floor.each do |rm|
-      rm[:photo_path] = asset_path(rm[:photo_path])
-    end
-  end
+  initial_groups = App.groups
 
   end_date = App.initial_end_date
   date_range = App.initial_date_range
 %>
 
-<%= react_component('App', :floors => initial_floors,
+<%= react_component('App', :groups => initial_groups,
                            :initialDateRange => date_range,
                            :initialEndDate => end_date) %>
 

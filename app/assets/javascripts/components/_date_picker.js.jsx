@@ -1,5 +1,4 @@
 const DatePicker = React.createClass({
-
   render: function() {
     return (
       <div className="datepicker">
@@ -13,10 +12,11 @@ const DatePicker = React.createClass({
   },
 
   dateForward: function() {
-    this.props.changeFloors("forward");
+    console.log(this.props);
+    this.props.changeDates("forward");
   },
 
   dateBack: function() {
-    this.props.changeFloors("backward");
+    this.props.changeDates("backward");
   }
 });

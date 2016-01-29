@@ -12,7 +12,9 @@ class AssignmentsController < ApplicationController
     else
       result[:end_date] = App.initial_end_date
     end
+    result[:groups] = App.groups(result[:end_date])
     result[:date_range] = DateUtils.dates_of_week_ending_on(result[:end_date])
+
     render :json => result
   end
 end

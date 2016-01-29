@@ -1,8 +1,9 @@
 class App
 
   DAY_OF_WEEK = "Tuesday"
+  PERIOD = 7.days
   SEED_OFFSET = 2
-  FLOORS = [1, 2]
+  GROUPS = ["Floor 1", "Floor 2"]
 
   def self.countdown_string
     date = DateUtils.next_xday_of_week(DAY_OF_WEEK)
@@ -19,39 +20,33 @@ class App
     DateUtils.dates_of_week_ending_on(initial_end_date)
   end
 
-  def self.roommates_for_floor(floor)
-    Roommate::FLOORS.keys.select{|k| Roommate::FLOORS[k]==floor}.map do |id|
-      names = Roommate::NAMES[id].split
-      p = Roommate.new({
-        :id => id,
-        :first_name => names[0],
-        :last_name => names[1],
-      })
-      {
-        :first_name => names[0],
-        :mapping => p.current_mapping,
-        :photo_path => p.photo_path,
-        :task => {
-          :name => Task::NAMES[p.task],
-          :details => Task::DESCRIPTIONS[p.task],
-        }
-      }
+  def self.groups(end_date=Date.today)
+    assignments = Mapping.get_assignments_for_end_date(end_date)
+
+    groups = App::GROUPS.map{|x| []}
+    assignments.each do |a|
+      groups[Roommate::GROUPS[a.roommate_id]].push(a.present)
     end
+    groups
   end
 
-  def self.generate_mappings
-    previous_offset = offset
-    App::FLOORS.each do |f|
-      current_floor = Roommate::FLOORS.keys.select{|k| Roommate::FLOORS[k]==f}
-      current_floor.each_with_index.map do |id, i|
-        task_id = (i + previous_offset) % Task::NUM_TASKS
-        Mapping.new({
+  def self.generate_mappings(date=Date.today)
+    current_offset = offset
+    assignments = []
+    App::GROUPS.each_with_index do |g, i|
+      current_group = Roommate::GROUPS.keys.select{|k| Roommate::GROUPS[k]==i}
+      current_group.each_with_index.map do |id, j|
+        task_id = (j + current_offset) % current_group.length
+        assignment = Mapping.new({
           :roommate_id => id,
           :task_id => task_id,
-          :offset => previous_offset,
-          :ds => Date.today}).save!
+          :offset => current_offset,
+          :ds => date})
+        assignment.save!
+        assignments.push(assignment)
       end
     end
+    assignments
   end
 
   def self.offset

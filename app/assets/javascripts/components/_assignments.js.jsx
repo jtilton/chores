@@ -2,15 +2,15 @@ const Assignments = React.createClass({
   render: function() {
     return (
       <div>
-        {this.getFloors()}
+        {this.getGroups()}
       </div>
     );
   },
 
-  getFloors: function() {
-    return _.map(this.props.floors, function(f, i) {
+  getGroups: function() {
+    return _.map(this.props.groups, function(g, i) {
       var label = "Floor " + (i+1);
-      return ( <Floor roommates={f}
+      return ( <Group cards={g}
                       label={label} /> )
     });
   }
