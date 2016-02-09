@@ -7,9 +7,14 @@ class App
 
   def self.countdown_string
     date = DateUtils.next_xday_of_week(DAY_OF_WEEK)
+    day_string = self.days_remaining == 1 ? "day" : "days"
+    "Chores due by #{date.strftime("%a %-m/%-d")} "\
+      "(in #{days_remaining} #{day_string})"
+  end
+
+  def self.days_remaining
+    date = DateUtils.next_xday_of_week(DAY_OF_WEEK)
     days_remaining = (date - Date.today).to_i
-    day_string = days_remaining == 1 ? "day" : "days"
-    "Chores due by #{date.strftime("%a %-m/%-d")} (in #{days_remaining} #{day_string})"
   end
 
   def self.initial_end_date

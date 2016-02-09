@@ -4,20 +4,48 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600italic,600,400italic,300italic,300);
 
+
+
 body {
   font-weight: 400;
   font-family: "Open Sans";
   background-color: #EEE;
 }
-
-.title {
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
-  color: white;
-  padding: 10px 0 10px 0;
-  margin-bottom: 10px;
-  background-color: #2574A9;
+.nav {
+  &:hover {
+    cursor: pointer;
+  }
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    background-color: #2574A9;
+    &.orange {
+      background-color: #F27935;
+    }
+    &.red {
+      background-color: #F22613;
+    }
+  }
+  .home {
+    position: absolute;
+    display: inline-block;
+    margin: 15px;
+    font-size: 30px;
+    color: white;
+    transition: transform 0.2s;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+  @media (max-width: 480px) {
+    .home {
+      display: none;
+    }
+  }
 }
 
 .datepicker {
@@ -43,7 +71,7 @@ body {
   }
 }
 
-.floor-label {
+.group-label {
   text-align: center;
   display: block;
   margin-bottom: 15px;
@@ -53,7 +81,7 @@ body {
   text-transform: uppercase;
 }
 
-.floor {
+.group {
   text-align: center;
   margin-bottom: 40px;
 }
@@ -71,7 +99,6 @@ body {
 
   &:hover {
     transform: scale(1.03);
-
   }
 
   .task {
@@ -138,8 +165,37 @@ body {
       }
     }
   }
+}
 
+@media (max-width: 480px) {
+  .card {
+    width: 60%;
+    position: relative;
+    .task {
+      font-size: 30px;
+      margin-top: 10px;
+    }
+    .content {
+      height: auto;
+      .roommate {
+        line-height: 70px;
+        height: 70px;
+        .photo {
+          display: inline-block;
+          height: 70px;
+          vertical-align: top;
+          border-radius: 35px;
+        }
+        .name {
+          display: inline;
+          font-size: 30px;
+        }
+      }
+    }
+    .button {
 
+    }
+  }
 }
 
 .hidden {

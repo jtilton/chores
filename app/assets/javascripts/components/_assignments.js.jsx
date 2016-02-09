@@ -8,10 +8,14 @@ const Assignments = React.createClass({
   },
 
   getGroups: function() {
-    return _.map(this.props.groups, function(g, i) {
-      var label = "Floor " + (i+1);
-      return ( <Group cards={g}
-                      label={label} /> )
-    });
+    var groups = [];
+    for (i = 0; i < this.props.groups.length; i++) {
+      var label = this.props.group_labels[i];
+      var cards = this.props.groups[i];
+      groups.push(
+        <Group cards={cards} label={label} />
+      )
+    }
+    return groups;
   }
 });

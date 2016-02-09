@@ -10,16 +10,19 @@ const App = React.createClass({
   render: function() {
     return (
       <div>
+        <Navbar days_remaining={this.props.days_remaining}
+                banner_text={this.props.banner_text}
+                changeDates={this.changeDates} />
         <DatePicker changeDates={this.changeDates}
                     dateRange={this.state.dateRange}
                     endDate={this.state.endDate}/>
-        <Assignments groups={this.state.groups} />
+        <Assignments groups={this.state.groups}
+                     group_labels={this.props.group_labels}/>
       </div>
     );
   },
 
   changeDates: function(click) {
-
     $.ajax({
       data: {
         click:click,

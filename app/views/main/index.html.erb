@@ -1,15 +1,18 @@
-<div class="title"><%= App.countdown_string %></div>
-
 <%
+  banner_text = App.countdown_string
+  days_remaining = App.days_remaining
   initial_groups = App.groups
-
+  group_labels = App::GROUPS
   end_date = App.initial_end_date
   date_range = App.initial_date_range
 %>
 
-<%= react_component('App', :groups => initial_groups,
+<%= react_component('App', :banner_text => banner_text,
+                           :days_remaining => days_remaining,
+                           :groups => initial_groups,
                            :initialDateRange => date_range,
-                           :initialEndDate => end_date) %>
+                           :initialEndDate => end_date,
+                           :group_labels => group_labels) %>
 
 
 

@@ -12,7 +12,6 @@ const DatePicker = React.createClass({
   },
 
   dateForward: function() {
-    console.log(this.props);
     this.props.changeDates("forward");
   },
 
