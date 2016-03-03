@@ -24,7 +24,7 @@ class Mapping < ActiveRecord::Base
   end
 
   def roommate
-    r = Roommate.new({:first_name => Roommate::NAMES[roommate_id].split[0]})
+    r = Roommate.new({:id => roommate_id})
     {
       :first_name => r.first_name,
       :photo_path => r.photo_path,

@@ -22,9 +22,9 @@ const ChoreCard = React.createClass({
             {this.props.card.task.details}
           </p>
           <div className={this.roommateClass()}>
-            <Img className="photo"
+            <img className="photo"
                  alt={this.props.card.roommate.first_name}
-                 src={'/assets/' + this.props.card.roommate.photo_path}
+                 src={this.props.image_map[this.props.card.roommate.photo_path]}
             />
             <div className="name"> {this.props.card.roommate.first_name} </div>
           </div>

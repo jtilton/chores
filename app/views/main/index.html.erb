@@ -5,6 +5,8 @@
   group_labels = App::GROUPS
   end_date = App.initial_end_date
   date_range = App.initial_date_range
+  image_map = {}
+  App.photo_paths.each {|p| image_map[p] = image_path(p)}
 %>
 
 <%= react_component('App', :banner_text => banner_text,
@@ -12,7 +14,8 @@
                            :groups => initial_groups,
                            :initialDateRange => date_range,
                            :initialEndDate => end_date,
-                           :group_labels => group_labels) %>
+                           :group_labels => group_labels,
+                           :image_map => image_map) %>
 
 
 

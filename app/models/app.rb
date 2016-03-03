@@ -35,6 +35,10 @@ class App
     groups
   end
 
+  def self.photo_paths
+    Roommate::NAMES.keys.map { |id| Roommate.new({:id => id}).photo_path }
+  end
+
   def self.generate_mappings(date=Date.today)
     current_offset = offset
     assignments = []

@@ -9,8 +9,10 @@ const Group = React.createClass({
   },
 
   getChoreCards: function() {
-    return _.map(this.props.cards, function(r) {
-      return ( <ChoreCard card={r}/> )
-    });
+    cards = [];
+    for (i = 0; i < this.props.cards.length; i++) {
+      cards.push( <ChoreCard card={this.props.cards[i]} image_map={this.props.image_map}/> )
+    }
+    return cards;
   }
 });

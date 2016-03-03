@@ -17,7 +17,8 @@ const App = React.createClass({
                     dateRange={this.state.dateRange}
                     endDate={this.state.endDate}/>
         <Assignments groups={this.state.groups}
-                     group_labels={this.props.group_labels}/>
+                     group_labels={this.props.group_labels}
+                     image_map={this.props.image_map}/>
       </div>
     );
   },

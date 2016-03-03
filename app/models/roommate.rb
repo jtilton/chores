@@ -44,8 +44,8 @@ class Roommate
 
   def initialize(params)
     self.id = params[:id]
-    self.first_name = params[:first_name]
-    self.last_name = params[:last_name]
+    self.first_name = params[:first_name] || NAMES[id].split[0]
+    self.last_name = params[:last_name] || NAMES[id].split[1]
   end
 
   def task
